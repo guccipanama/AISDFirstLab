@@ -2,4 +2,14 @@
 C:\Users\HP\source\repos\Решение\Лаба 2.1.1\Class.h(2,10): warning C4067: непредвиденные лексемы за директивой препроцессора, требуется newline
 C:\Users\HP\source\repos\Решение\Лаба 2.1.1\Class.h(3,10): warning C4067: непредвиденные лексемы за директивой препроцессора, требуется newline
 C:\Users\HP\source\repos\Решение\Лаба 2.1.1\Class.h(4,10): warning C4067: непредвиденные лексемы за директивой препроцессора, требуется newline
+C:\Users\HP\source\repos\Решение\Лаба 2.1.1\Class.h(5,10): warning C4067: непредвиденные лексемы за директивой препроцессора, требуется newline
+  Main.cpp
+C:\Users\HP\source\repos\Решение\Лаба 2.1.1\Main.cpp(116,10): warning C4067: непредвиденные лексемы за директивой препроцессора, требуется newline
+C:\Users\HP\source\repos\Решение\Лаба 2.1.1\Class.h(2,10): warning C4067: непредвиденные лексемы за директивой препроцессора, требуется newline
+C:\Users\HP\source\repos\Решение\Лаба 2.1.1\Class.h(3,10): warning C4067: непредвиденные лексемы за директивой препроцессора, требуется newline
+C:\Users\HP\source\repos\Решение\Лаба 2.1.1\Class.h(4,10): warning C4067: непредвиденные лексемы за директивой препроцессора, требуется newline
+C:\Users\HP\source\repos\Решение\Лаба 2.1.1\Class.h(5,10): warning C4067: непредвиденные лексемы за директивой препроцессора, требуется newline
+C:\Users\HP\source\repos\Решение\Лаба 2.1.1\Main.cpp(117,10): warning C4067: непредвиденные лексемы за директивой препроцессора, требуется newline
+C:\Users\HP\source\repos\Решение\Лаба 2.1.1\Main.cpp(132,12): warning C4101: ex: неиспользованная локальная переменная
+  Создание кода...
   Лаба 2.1.1.vcxproj -> C:\Users\HP\source\repos\Решение\Debug\Лаба 2.1.1.exe

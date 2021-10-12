@@ -20,7 +20,10 @@ String::~String()
 {
 	delete[]_data;
 }
-
+int String::GetSize()
+{
+	return _size;
+}
 char& String::operator[](int index)
 {
 	if (index >= _size)
@@ -85,6 +88,39 @@ String operator*(int power, const String string)
 		strcat(p, string._data);
 	return temp;
 }
+std::ostream& operator<<(std::ostream& out, const String& string)
+{
+	cout << string._data << endl;
+	return out;
+}
+std::istream& operator>>(istream& in, String& string)
+{
+	char temp[80];
+	in.get(temp, 80);
+	if (in)
+		string = temp;
+	while (in && in.get() != '\n')
+		continue;
+	return in;
+}
+bool operator<(const String& st1, const String& st2)
+{
+	return (strcmp(st1._data, st2._data) < 0);
+}
+
+bool operator>(const String& st1, const String& st2)
+{
+	return (strcmp(st1._data, st2._data) > 0);
+}
+
+bool operator==(const String& st1, const String& st2)
+{
+	return (strcmp(st1._data, st2._data) == 0);
+}
+bool operator!=(const String& st1, const String& st2)
+{
+	return (strcmp(st1._data, st2._data) != 0);
+}
 String String::Substring(int begin, int end)
 {
 	if ((begin < 0) || (begin >= _size))
@@ -93,7 +129,7 @@ String String::Substring(int begin, int end)
 		throw - 1;
 	String temp;
 	temp._size = end - begin + 1;
-	temp._data = new char[end - begin + 1];
+	temp._data = new char[end - begin + 2];
 	int j = 0;
 	for (int i = begin; i < end + 1; i++)
 	{

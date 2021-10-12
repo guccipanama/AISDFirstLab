@@ -114,10 +114,46 @@ public:
 	}
 };*/
 #include "Class.h";
+#include <windows.h>;
+#include <conio.h>
+
+int GetKey()
+{
+	int key = _getch();
+	if ((key == 0) || (key == 224)) key = _getch();
+	return key;
+}
+
+int MainMenu()
+{
+	while (true)
+	{
+		system("cls");
+		std::cout << "вариант №6: класс \"строка\"\n";
+		std::cout << "\n";
+		std::cout << "выберите действие\n";
+		std::cout << "\n";
+		std::cout << "1. добавить объект в базу\n";
+		std::cout << "2. удалить объект из базы по индексу\n";
+		std::cout << "3. действия над объектами\n";
+		std::cout << "4. вывести содержимое на экран\n";
+		std::cout << "\n";
+		std::cout << "для выбора нажмите нужную клавишу\n";
+		std::cout << "нажмите esc для выхода\n";
+		int key = GetKey();
+		if (key == 27 || key >= '1' && key <= '4' || key == 75 || key == 77)
+			return key;
+	}
+}
 
 int main()
 {
-	String Name1 = "Вася";
+	system("color 0A");
+	SetConsoleCP(1251);
+	SetConsoleOutputCP(1251);
+	
+	String** Array;
+	/*String Name1 = "Вася";
 	String Name2 = "Василий";
 	Name1 = Name2;
 	try
@@ -132,5 +168,6 @@ int main()
 	String Name4 = Name3 * 2;
 	Name1 = Name4.Substring(7, 8);
 	Name1 = Name1 * 2;
+	cout << Name1;*/
 	return 0;
 }
