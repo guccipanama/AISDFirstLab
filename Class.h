@@ -1,8 +1,8 @@
 #pragma once
-#include <iostream>;
-#include <stdio.h>;
-#include <string.h>;
-#include <cstdlib>;
+#include <iostream>
+#include <stdio.h>
+#include <string.h>
+#include <cstdlib>
 using namespace std;
 
 class String
@@ -12,21 +12,21 @@ private:
 	int _size;
 public:
 	String();
-	String(const char* string);
-	String(const String& string);
+	String(const char* Str);
+	String(const String& Str);
 	~String();
 	int GetSize();
 
-	char& operator[](int index);
-	String operator+(const String string);
-	String& operator=(const String& string);
-	friend String operator*(const String string, int power);
-	friend String operator*(int power, const String string);
-	friend ostream& operator<<(std::ostream& out, const String& string);
-	friend istream& operator>>(istream& is, String& string);
-	friend bool operator<(const String& st1, const String& st2);
-	friend bool operator>(const String& st1, const String& st2);
-	friend bool operator==(const String& st1, const String& st2);
-	friend bool operator!=(const String& st1, const String& st2);
-	String Substring(int begin, int end);
+	char& operator[](int Index);
+	String operator+(const String Str);
+	String& operator=(const String& Str);
+	friend String operator*(const String Str, int Power);
+	friend String operator*(int Power, const String Str);
+	friend ostream& operator<<(ostream& Out, const String& Str);
+	//friend istream& operator>>(istream& Is, const String& Str);
+	friend bool operator<(const String& Str1, const String& Str2);
+	friend bool operator>(const String& Str1, const String& Str2);
+	friend bool operator==(const String& Str1, const String& Str2);
+	friend bool operator!=(const String& Str1, const String& Str2);
+	String Substring(int Begin, int End) const;
 };

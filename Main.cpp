@@ -1,150 +1,6 @@
-/*#include <iostream>;
-#include <string.h>;
-#include <cstdlib>;
-using namespace std;
-
-class String
-{
-private:
-	char* _data;
-	int _size;
-public:
-	String(): _data(NULL), _size(0) {}
-	String(const char* string)
-	{
-		_size = strlen(string);
-		_data = new char[_size + 1];
-		strcpy_s(_data, _size + 1, string);
-	}
-	String(const String& string)
-	{
-		_size = string._size;
-		_data = new char[string._size];
-		if (string._data)
-			_data = _strdup(string._data);
-		else
-			_data = NULL;
-	}
-	~String()
-	{
-		delete[]_data;
-	}
-
-	char& operator[](int index)
-	{
-		if (index >= _size)
-			throw - 1;
-		else
-			return _data[index];
-	}
-	String operator+(const String string)
-	{
-		if (!_size) 
-			return string;
-		if (!string._size)
-			return *this;
-		String result;
-		result._size = _size + string._size;
-		result._data = new char[_size + string._size + 1];
-		strcpy(result._data, _data);
-		strcat(result._data, string._data);
-		return result;
-	}
-	String& operator=(const String& string)
-	{
-		if (this == (&string))
-			return *this;
-		if (_data)
-			delete[] _data;
-		if (string._data)
-		{
-			_size = string._size;
-			_data = _strdup(string._data);
-		}
-		else
-		{
-			_size = 0;
-			_data = NULL;
-		}
-		return *this;
-	}
-	friend String operator*(const String string, int power)
-	{
-		String temp;
-		if ((power <= 0) || (string._size == 0))
-			return temp;
-		temp._size = power * string._size;
-		temp._data = new char[power * string._size + 1];
-		char* p = temp._data;
-		*p = 0;
-		for (int i = 0; i < power; i++)
-			strcat(p, string._data);
-		return temp;
-	}
-	friend String operator*(int power, const String string)
-	{
-		String temp;
-		if ((power <= 0) || (string._size == 0))
-			return temp;
-		temp._size = power * string._size;
-		temp._data = new char[power * string._size + 1];
-		char* p = temp._data;
-		*p = 0;
-		for (int i = 0; i < power; i++)
-			strcat(p, string._data);
-		return temp;
-	}
-	String Substring(int begin, int end)
-	{
-		if ((begin < 0) || (begin >= _size))
-			throw - 1;
-		if ((end < 0) || (end >= _size) || (end < begin))
-			throw - 1;
-		String temp;
-		temp._size = end - begin + 1;
-		temp._data = new char[end - begin + 2];
-		int j = 0;
-		for (int i = begin; i < end + 1; i++)
-		{
-			temp._data[j] = _data[i];
-			j++;
-		}
-		temp._data[end - begin + 1] = 0;
-		return temp;
-	}
-};*/
-#include "Class.h";
-#include <windows.h>;
+#include "Class.h"
+#include <windows.h>
 #include <conio.h>
-
-int GetKey()
-{
-	int key = _getch();
-	if ((key == 0) || (key == 224)) key = _getch();
-	return key;
-}
-
-int MainMenu()
-{
-	while (true)
-	{
-		system("cls");
-		std::cout << "вариант №6: класс \"строка\"\n";
-		std::cout << "\n";
-		std::cout << "выберите действие\n";
-		std::cout << "\n";
-		std::cout << "1. добавить объект в базу\n";
-		std::cout << "2. удалить объект из базы по индексу\n";
-		std::cout << "3. действия над объектами\n";
-		std::cout << "4. вывести содержимое на экран\n";
-		std::cout << "\n";
-		std::cout << "для выбора нажмите нужную клавишу\n";
-		std::cout << "нажмите esc для выхода\n";
-		int key = GetKey();
-		if (key == 27 || key >= '1' && key <= '4' || key == 75 || key == 77)
-			return key;
-	}
-}
 
 int main()
 {
@@ -152,22 +8,138 @@ int main()
 	SetConsoleCP(1251);
 	SetConsoleOutputCP(1251);
 	
-	String** Array;
 	/*String Name1 = "Вася";
 	String Name2 = "Василий";
 	Name1 = Name2;
 	try
 	{
 		Name1[0] = 'С';
+		cout << Name1[6] << endl;
 	}
-	catch(int ex)
+	catch(const char* ex)
 	{
-		std::cout << "invalid index" << endl;
+		std::cout << ex << endl;
 	}
 	String Name3 = Name1 + Name2;
-	String Name4 = Name3 * 2;
+	const String Name4 = Name3 * 3;
 	Name1 = Name4.Substring(7, 8);
-	Name1 = Name1 * 2;
-	cout << Name1;*/
+	try
+	{
+		cout << Name1[2] << endl;
+	}
+	catch (const char* ex)
+	{
+		std::cout << ex << endl;
+	}
+	const String Name5 = Name1 * 3;
+	cout << Name5;
+	return 0;*/
+
+	try
+	{
+		char Str1[32];
+		cout << "Enter the string" << endl;
+		cin >> Str1;
+		cout << endl;
+		int Change = 0;
+		String A(Str1);
+		while (Change == 0)
+		{
+			system("cls");
+			cout << "Your string: "<< A << endl;
+			int Option = 0;
+			cout << "Select an option: "<< endl;
+			cout << "1 - operator for reading / writing a character by its index" << endl;
+			cout << "2 - addition operator for string concatenation" << endl;
+			cout << "3 - multiplication operator by a number to duplicate a string the specified number of times" << endl;
+			cout << "4 - the possibility of obtaining a substring by the specified index of the beginning of the substring and its length" << endl;
+			cout << "5 - Exit" << endl;
+			cin >> Option;
+			cout << endl;
+			switch (Option)
+			{
+			case 1:
+			{
+				system("cls");
+				int Index = 0;
+				int Choice = 0;
+				cout << "Do you want to write by index? Or read it? 1 - write / 2 - read" << endl;
+				cin >> Choice;
+				cout << endl;
+				cout << "Enter the index" << endl;
+				cin >> Index;
+				cout << endl;
+				switch (Choice)
+				{
+				case 1:
+				{
+					system("cls");
+					cout << A;
+					cout << "Element " << Index << " is " << A[Index] << endl;
+					cout << "Replace with:  ";
+					char s;
+					cin >> s;
+					A[Index] = s;
+					cout << endl;
+					cout << A;
+				}
+				case 2:
+				{
+					system("cls");
+					cout << "Element " << Index << " is " << A[Index] << endl;
+				}
+				}
+				break;
+			}
+			case 2:
+			{
+				system("cls");
+				char Str2[32];
+				cout << "Enter the string" << endl;
+				cin >> Str2;
+				cout << endl;
+				String B(Str2);
+				String Sum = A + B;
+				cout << Sum;
+				cout << endl;
+				break;
+			}
+			case 3:
+			{
+				system("cls");
+				int Multiplier = 1;
+				cout << "Enter the multiplier" << endl;
+				cin >> Multiplier;
+				cout << endl;
+				String Mul = A * Multiplier;
+				cout << Mul;
+				cout << endl;
+				break;
+			}
+			case 4:
+			{
+				system("cls");
+				int Index = 0;
+				int Length = 0;
+				cout << "Enter the index" << endl;
+				cin >> Index;
+				cout << "Enter the length" << endl;
+				cin >> Length;
+				String Sub = A.Substring(Index, Length);
+				cout << Sub;
+				cout << endl;
+				break;
+			}
+			case 5:
+			{
+				return 0;
+			}
+			}
+		}
+	}
+	catch (const char* Err)
+	{
+		cerr << "Error: " << Err << endl;
+	}
 	return 0;
 }
