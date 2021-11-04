@@ -23,10 +23,9 @@ public:
 	friend String operator*(const String Str, int Power);
 	friend String operator*(int Power, const String Str);
 	friend ostream& operator<<(ostream& Out, const String& Str);
-	//friend istream& operator>>(istream& Is, const String& Str);
 	friend bool operator<(const String& Str1, const String& Str2);
 	friend bool operator>(const String& Str1, const String& Str2);
 	friend bool operator==(const String& Str1, const String& Str2);
 	friend bool operator!=(const String& Str1, const String& Str2);
-	String Substring(int Begin, int End) const;
+	String Substring(int Index, int Length) const;
 };

@@ -93,16 +93,6 @@ std::ostream& operator<<(std::ostream& Out, const String& Str)
 	cout << Str._data << endl;
 	return Out;
 }
-/*std::istream& operator>>(istream& In, String& String)
-{
-	char temp[80];
-	In.get(temp, 80);
-	if (In)
-		String = temp;
-	while (In && In.get() != '\n')
-		continue;
-	return In;
-}*/
 bool operator<(const String& Str1, const String& Str2)
 {
 	return (strcmp(Str1._data, Str2._data) < 0);
@@ -119,21 +109,18 @@ bool operator!=(const String& Str1, const String& Str2)
 {
 	return (strcmp(Str1._data, Str2._data) != 0);
 }
-String String::Substring(int Begin, int End) const
+String String::Substring(int Index, int Length) const
 {
-	if ((Begin < 0) || (Begin >= _size))
-		throw - 1;
-	if ((End < 0) || (End >= _size) || (End < Begin))
-		throw - 1;
+	if ((Index < 0) || (Index >= _size))
+		throw "invalid index";
+	if ((Length < 0) || (Length >= _size) || (Length < Index))
+		throw "invalid length";
 	String temp;
-	temp._size = End - Begin + 1;
-	temp._data = new char[End - Begin + 2];
-	int j = 0;
-	for (int i = Begin; i < End + 1; i++)
-	{
-		temp._data[j] = _data[i];
-		j++;
-	}
-	temp._data[End - Begin + 1] = 0;
+	temp._size = Length;
+	temp._data = new char[Length + 1];
+	for (int i = 0; i < Length + 1; i++)
+		if (_data)
+			temp._data[i] = _data[Index + i];
+	temp._data[Length] = 0;
 	return temp;
 }

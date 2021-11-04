@@ -37,28 +37,42 @@ int main()
 
 	try
 	{
+		String A;
 		char Str1[32];
 		cout << "Enter the string" << endl;
 		cin >> Str1;
 		cout << endl;
+		A = Str1;
 		int Change = 0;
-		String A(Str1);
 		while (Change == 0)
 		{
 			system("cls");
 			cout << "Your string: "<< A << endl;
-			int Option = 0;
+			cout << endl;
 			cout << "Select an option: "<< endl;
-			cout << "1 - operator for reading / writing a character by its index" << endl;
-			cout << "2 - addition operator for string concatenation" << endl;
-			cout << "3 - multiplication operator by a number to duplicate a string the specified number of times" << endl;
-			cout << "4 - the possibility of obtaining a substring by the specified index of the beginning of the substring and its length" << endl;
-			cout << "5 - Exit" << endl;
+			cout << "1 - enter the string" << endl;
+			cout << "2 - operator for reading / writing a character by its index" << endl;
+			cout << "3 - addition operator for string concatenation" << endl;
+			cout << "4 - multiplication operator by a number to duplicate a string the specified number of times" << endl;
+			cout << "5 - the possibility of obtaining a substring by the specified index of the beginning of the substring and its length" << endl;
+			cout << "6 - Exit" << endl;
+
+			int Option = 0;
 			cin >> Option;
 			cout << endl;
 			switch (Option)
 			{
 			case 1:
+			{
+				system("cls");
+				char Str1[32];
+				cout << "Enter the string" << endl;
+				cin >> Str1;
+				cout << endl;
+				A = Str1;
+				break;
+			}
+			case 2:
 			{
 				system("cls");
 				int Index = 0;
@@ -87,11 +101,12 @@ int main()
 				{
 					system("cls");
 					cout << "Element " << Index << " is " << A[Index] << endl;
+					int a = _getch();
 				}
 				}
 				break;
 			}
-			case 2:
+			case 3:
 			{
 				system("cls");
 				char Str2[32];
@@ -100,11 +115,11 @@ int main()
 				cout << endl;
 				String B(Str2);
 				String Sum = A + B;
-				cout << Sum;
-				cout << endl;
+				cout << Sum << endl;
+				int a = _getch();
 				break;
 			}
-			case 3:
+			case 4:
 			{
 				system("cls");
 				int Multiplier = 1;
@@ -112,11 +127,11 @@ int main()
 				cin >> Multiplier;
 				cout << endl;
 				String Mul = A * Multiplier;
-				cout << Mul;
-				cout << endl;
+				cout << Mul << endl;
+				int a = _getch();
 				break;
 			}
-			case 4:
+			case 5:
 			{
 				system("cls");
 				int Index = 0;
@@ -126,11 +141,11 @@ int main()
 				cout << "Enter the length" << endl;
 				cin >> Length;
 				String Sub = A.Substring(Index, Length);
-				cout << Sub;
-				cout << endl;
+				cout << Sub << endl;
+				int a = _getch();
 				break;
 			}
-			case 5:
+			case 6:
 			{
 				return 0;
 			}
