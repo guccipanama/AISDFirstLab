@@ -20,7 +20,7 @@ String::~String()
 {
 	delete[]_data;
 }
-int String::GetSize()
+int String::GetSize() const
 {
 	return _size;
 }
@@ -95,19 +95,19 @@ std::ostream& operator<<(std::ostream& Out, const String& Str)
 	cout << Str._data << endl;
 	return Out;
 }
-bool String::operator<(const String& Str)
+bool String::operator<(const String& Str) const
 {
 	return (strcmp(Str._data, _data) < 0);
 }
-bool String::operator>(const String& Str)
+bool String::operator>(const String& Str) const
 {
 	return (strcmp(Str._data, _data) > 0);
 }
-bool String::operator==(const String& Str)
+bool String::operator==(const String& Str) const
 {
 	return (strcmp(Str._data, _data) == 0);
 }
-bool String::operator!=(const String& Str)
+bool String::operator!=(const String& Str) const
 {
 	return (strcmp(Str._data, _data) != 0);
 }
