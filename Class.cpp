@@ -62,20 +62,22 @@ String& String::operator=(const String& Str)
 	}
 	return *this;
 }
-String operator*(const String Str, int Power)
+String String::operator*(const int Power)
 {
 	String temp;
-	if ((Power <= 0) || (Str._size == 0))
+	if (_size == 0)
 		return temp;
-	temp._size = Power * Str._size;
-	temp._data = new char[Power * Str._size + 1];
+	if (Power <= 0)
+		throw "invalid ratio";
+	temp._size = Power * _size;
+	temp._data = new char[Power * _size + 1];
 	char* p = temp._data;
 	*p = 0;
 	for (int i = 0; i < Power; i++)
-		strcat_s(p, temp._size + 1,  Str._data);
+		strcat_s(p, temp._size + 1,  _data);
 	return temp;
 }
-String operator*(int Power, const String Str)
+/*String operator*(int Power, const String Str)
 {
 	String temp;
 	if ((Power <= 0) || (Str._size == 0))
@@ -87,27 +89,27 @@ String operator*(int Power, const String Str)
 	for (int i = 0; i < Power; i++)
 		strcat_s(p, temp._size + 1, Str._data);
 	return temp;
-}
+}*/
 std::ostream& operator<<(std::ostream& Out, const String& Str)
 {
 	cout << Str._data << endl;
 	return Out;
 }
-bool operator<(const String& Str1, const String& Str2)
+bool String::operator<(const String& Str)
 {
-	return (strcmp(Str1._data, Str2._data) < 0);
+	return (strcmp(Str._data, _data) < 0);
 }
-bool operator>(const String& Str1, const String& Str2)
+bool String::operator>(const String& Str)
 {
-	return (strcmp(Str1._data, Str2._data) > 0);
+	return (strcmp(Str._data, _data) > 0);
 }
-bool operator==(const String& Str1, const String& Str2)
+bool String::operator==(const String& Str)
 {
-	return (strcmp(Str1._data, Str2._data) == 0);
+	return (strcmp(Str._data, _data) == 0);
 }
-bool operator!=(const String& Str1, const String& Str2)
+bool String::operator!=(const String& Str)
 {
-	return (strcmp(Str1._data, Str2._data) != 0);
+	return (strcmp(Str._data, _data) != 0);
 }
 String String::Substring(int Index, int Length) const
 {

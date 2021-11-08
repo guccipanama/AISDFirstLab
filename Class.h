@@ -1,7 +1,7 @@
 #pragma once
 #include <iostream>
 #include <stdio.h>
-#include <string.h>
+#include <string>
 #include <cstdlib>
 using namespace std;
 
@@ -20,12 +20,12 @@ public:
 	char& operator[](int Index);
 	String operator+(const String Str);
 	String& operator=(const String& Str);
-	friend String operator*(const String Str, int Power);
-	friend String operator*(int Power, const String Str);
+	String operator*(const int Power);
+	//friend String operator*(int Power, const String Str);
 	friend ostream& operator<<(ostream& Out, const String& Str);
-	friend bool operator<(const String& Str1, const String& Str2);
-	friend bool operator>(const String& Str1, const String& Str2);
-	friend bool operator==(const String& Str1, const String& Str2);
-	friend bool operator!=(const String& Str1, const String& Str2);
+	bool operator<(const String& Str);
+	bool operator>(const String& Str);
+	bool operator==(const String& Str);
+	bool operator!=(const String& Str);
 	String Substring(int Index, int Length) const;
 };
