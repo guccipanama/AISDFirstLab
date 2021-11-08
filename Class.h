@@ -15,7 +15,7 @@ public:
 	String(const char* Str);
 	String(const String& Str);
 	~String();
-	int GetSize();
+	int GetSize() const;
 
 	char& operator[](int Index);
 	String operator+(const String Str);
@@ -23,9 +23,9 @@ public:
 	String operator*(const int Power);
 	//friend String operator*(int Power, const String Str);
 	friend ostream& operator<<(ostream& Out, const String& Str);
-	bool operator<(const String& Str);
-	bool operator>(const String& Str);
-	bool operator==(const String& Str);
-	bool operator!=(const String& Str);
+	bool operator<(const String& Str) const;
+	bool operator>(const String& Str) const;
+	bool operator==(const String& Str) const;
+	bool operator!=(const String& Str) const;
 	String Substring(int Index, int Length) const;
 };
