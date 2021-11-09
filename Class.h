@@ -17,7 +17,7 @@ public:
 	~String();
 	int GetSize() const;
 
-	char& operator[](int Index);
+	char& operator[](int Index) const;
 	String operator+(const String Str);
 	String& operator=(const String& Str);
 	String operator*(const int Power);
