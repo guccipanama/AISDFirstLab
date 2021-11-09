@@ -115,7 +115,7 @@ String String::Substring(int Index, int Length) const
 {
 	if ((Index < 0) || (Index >= _size))
 		throw "invalid index";
-	if ((Length < 0) || (Length >= _size) || (Length < Index))
+	if ((Length < 0) || (Length >= _size))
 		throw "invalid length";
 	String temp;
 	temp._size = Length;
