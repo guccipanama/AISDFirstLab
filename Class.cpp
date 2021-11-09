@@ -1,130 +1,130 @@
 #include "Class.h"
 
-String::String() : _data(NULL), _size(0) {}
+String::String() : Data(NULL), Size(0) {}
 String::String(const char* Str)
 {
-	_size = strlen(Str);
-	_data = new char[_size + 1];
-	strcpy_s(_data, _size + 1, Str);
+	Size = strlen(Str);
+	Data = new char[Size + 1];
+	strcpy_s(Data, Size + 1, Str);
 }
 String::String(const String& Str)
 {
-	_size = Str._size;
-	_data = new char[Str._size];
-	if (Str._data)
-		_data = _strdup(Str._data);
+	Size = Str.Size;
+	Data = new char[Str.Size];
+	if (Str.Data)
+		Data = _strdup(Str.Data);
 	else
-		_data = NULL;
+		Data = NULL;
 }
 String::~String()
 {
-	delete[]_data;
+	delete[]Data;
 }
 int String::GetSize() const
 {
-	return _size;
+	return Size;
 }
 char& String::operator[](int Index)
 {
-	if (Index >= _size)
-		throw "invalid index";
+	if (Index >= Size)
+		throw "Invalid index";
 	else
-		return _data[Index];
+		return Data[Index];
 }
 String String::operator+(const String Str)
 {
-	if (!_size)
+	if (!Size)
 		return Str;
-	if (!Str._size)
+	if (!Str.Size)
 		return *this;
-	String result;
-	result._size = _size + Str._size;
-	result._data = new char[_size + Str._size + 1];
-	strcpy_s(result._data, result._size + 1, _data);
-	strcat_s(result._data, result._size + 1, Str._data);
-	return result;
+	String Result;
+	Result.Size = Size + Str.Size;
+	Result.Data = new char[Size + Str.Size + 1];
+	strcpy_s(Result.Data, Result.Size + 1, Data);
+	strcat_s(Result.Data, Result.Size + 1, Str.Data);
+	return Result;
 }
 String& String::operator=(const String& Str)
 {
 	if (this == (&Str))
 		return *this;
-	if (_data)
-		delete[] _data;
-	if (Str._data)
+	if (Data)
+		delete[] Data;
+	if (Str.Data)
 	{
-		_size = Str._size;
-		_data = _strdup(Str._data);
+		Size = Str.Size;
+		Data = _strdup(Str.Data);
 	}
 	else
 	{
-		_size = 0;
-		_data = NULL;
+		Size = 0;
+		Data = NULL;
 	}
 	return *this;
 }
 String String::operator*(const int Power)
 {
-	String temp;
-	if (_size == 0)
-		return temp;
+	String Temp;
+	if (Size == 0)
+		return Temp;
 	if (Power <= 0)
-		throw "invalid ratio";
-	temp._size = Power * _size;
-	temp._data = new char[Power * _size + 1];
-	char* p = temp._data;
-	*p = 0;
+		throw "Invalid ratio";
+	Temp.Size = Power * Size;
+	Temp.Data = new char[Power * Size + 1];
+	char* P = Temp.Data;
+	*P = 0;
 	for (int i = 0; i < Power; i++)
-		strcat_s(p, temp._size + 1,  _data);
-	return temp;
+		strcat_s(P, Temp.Size + 1,  Data);
+	return Temp;
 }
 String operator*(int Power, const String Str)
 {
-	String temp;
-	if (Str._size == 0)
-		return temp;
+	String Temp;
+	if (Str.Size == 0)
+		return Temp;
 	if (Power <= 0)
-		throw "invalid ratio";
-	temp._size = Power * Str._size;
-	temp._data = new char[Power * Str._size + 1];
-	char* p = temp._data;
-	*p = 0;
+		throw "Invalid ratio";
+	Temp.Size = Power * Str.Size;
+	Temp.Data = new char[Power * Str.Size + 1];
+	char* P = Temp.Data;
+	*P = 0;
 	for (int i = 0; i < Power; i++)
-		strcat_s(p, temp._size + 1, Str._data);
-	return temp;
+		strcat_s(P, Temp.Size + 1, Str.Data);
+	return Temp;
 }
 ostream& operator<<(std::ostream& Out, const String& Str)
 {
-	cout << Str._data << endl;
+	cout << Str.Data << endl;
 	return Out;
 }
 bool String::operator<(const String& Str) const
 {
-	return (strcmp(Str._data, _data) < 0);
+	return (strcmp(Str.Data, Data) < 0);
 }
 bool String::operator>(const String& Str) const
 {
-	return (strcmp(Str._data, _data) > 0);
+	return (strcmp(Str.Data, Data) > 0);
 }
 bool String::operator==(const String& Str) const
 {
-	return (strcmp(Str._data, _data) == 0);
+	return (strcmp(Str.Data, Data) == 0);
 }
 bool String::operator!=(const String& Str) const
 {
-	return (strcmp(Str._data, _data) != 0);
+	return (strcmp(Str.Data, Data) != 0);
 }
 String String::Substring(int Index, int Length) const
 {
-	if ((Index < 0) || (Index >= _size))
-		throw "invalid index";
-	if ((Length < 0) || (Length >= _size) || (Length < Index))
-		throw "invalid length";
-	String temp;
-	temp._size = Length;
-	temp._data = new char[Length + 1];
+	if ((Index < 0) || (Index >= Size))
+		throw "Invalid index";
+	if ((Length < 0) || (Length >= Size) || (Length < Index))
+		throw "Invalid length";
+	String Temp;
+	Temp.Size = Length;
+	Temp.Data = new char[Length + 1];
 	for (int i = 0; i < Length + 1; i++)
-		if (_data)
-			temp._data[i] = _data[Index + i];
-	temp._data[Length] = 0;
-	return temp;
+		if (Data)
+			Temp.Data[i] = Data[Index + i];
+	Temp.Data[Length] = 0;
+	return Temp;
 }

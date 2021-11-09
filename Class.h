@@ -8,8 +8,8 @@ using namespace std;
 class String
 {
 private:
-	char* _data;
-	int _size;
+	char* Data;
+	int Size;
 public:
 	String();
 	String(const char* Str);
