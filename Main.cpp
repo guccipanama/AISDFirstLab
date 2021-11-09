@@ -8,10 +8,9 @@ int main()
 	SetConsoleCP(1251);
 	SetConsoleOutputCP(1251);
 	
-	String Name1 = "Вася";
+	/*String Name1 = "Вася";
 	String Name2 = "Василий";
-	Name2 = Name1 * 2;
-	Name2 = 2 * Name1;
+	Name2 = Name1 * 2;*/
 
 	/*String Name1 = "Вася";
 	String Name2 = "Василий";

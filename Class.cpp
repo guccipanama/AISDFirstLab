@@ -77,11 +77,13 @@ String String::operator*(const int Power)
 		strcat_s(p, temp._size + 1,  _data);
 	return temp;
 }
-/*String operator*(int Power, const String Str)
+String operator*(int Power, const String Str)
 {
 	String temp;
-	if ((Power <= 0) || (Str._size == 0))
+	if (Str._size == 0)
 		return temp;
+	if (Power <= 0)
+		throw "invalid ratio";
 	temp._size = Power * Str._size;
 	temp._data = new char[Power * Str._size + 1];
 	char* p = temp._data;
@@ -89,8 +91,8 @@ String String::operator*(const int Power)
 	for (int i = 0; i < Power; i++)
 		strcat_s(p, temp._size + 1, Str._data);
 	return temp;
-}*/
-std::ostream& operator<<(std::ostream& Out, const String& Str)
+}
+ostream& operator<<(std::ostream& Out, const String& Str)
 {
 	cout << Str._data << endl;
 	return Out;
@@ -115,7 +117,7 @@ String String::Substring(int Index, int Length) const
 {
 	if ((Index < 0) || (Index >= _size))
 		throw "invalid index";
-	if ((Length < 0) || (Length >= _size))
+	if ((Length < 0) || (Length >= _size) || (Length < Index))
 		throw "invalid length";
 	String temp;
 	temp._size = Length;

@@ -21,7 +21,7 @@ public:
 	String operator+(const String Str);
 	String& operator=(const String& Str);
 	String operator*(const int Power);
-	//friend String operator*(int Power, const String Str);
+	friend String operator*(int Power, const String Str);
 	friend ostream& operator<<(ostream& Out, const String& Str);
 	bool operator<(const String& Str) const;
 	bool operator>(const String& Str) const;
