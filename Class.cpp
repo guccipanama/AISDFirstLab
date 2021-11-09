@@ -24,7 +24,7 @@ int String::GetSize() const
 {
 	return Size;
 }
-char& String::operator[](int Index)
+char& String::operator[](int Index) const
 {
 	if (Index >= Size)
 		throw "Invalid index";
